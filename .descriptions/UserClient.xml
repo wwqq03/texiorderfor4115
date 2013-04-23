@@ -3,6 +3,7 @@
     name="UserClient" 
     uuid="_Ct_YQ6wcEeKyht2NYD5a8A" 
     status="under construction" 
+    session="multi_session" 
     type="block" 
     >
 </block>
