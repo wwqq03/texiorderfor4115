@@ -24,7 +24,7 @@
       <ownedParameter xmi:id="_9A0ZEKwmEeKyht2NYD5a8A" name="close" direction="out"/>
       <ownedParameter xmi:id="_sz_TMKwoEeKyht2NYD5a8A" name="sendOrder" type="_IWpPkKwsEeKyht2NYD5a8A" direction="out" isStream="true"/>
       <ownedParameter xmi:id="_EQDVAKwpEeKyht2NYD5a8A" name="getAck" type="_IWpPkKwsEeKyht2NYD5a8A" isStream="true"/>
-      <variable xmi:id="_OoBAoKwkEeKyht2NYD5a8A" name="alias_user" type="_-51fQKwdEeKyht2NYD5a8A"/>
+      <variable xmi:id="_OoBAoKwkEeKyht2NYD5a8A" name="alias_client" type="_-51fQKwdEeKyht2NYD5a8A"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_D7jTYKwjEeKyht2NYD5a8A" name="start" outgoing="_WT3ugKwjEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A" parameter="_IZZ-wKwjEeKyht2NYD5a8A"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_TeVEwKwjEeKyht2NYD5a8A" name="o0" outgoing="_u3tJUKwmEeKyht2NYD5a8A" incoming="_iKsWEKwkEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_ymxY4awiEeKyht2NYD5a8A"/>
       <node xmi:type="uml:AddVariableValueAction" xmi:id="_dr-vEKwkEeKyht2NYD5a8A" name="sv0" outgoing="_iKsWEKwkEeKyht2NYD5a8A" incoming="_WT3ugKwjEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" variable="_OoBAoKwkEeKyht2NYD5a8A"/>
@@ -40,12 +40,12 @@
         <trigger xmi:id="_Aid64KwnEeKyht2NYD5a8A" name="CLICKED" event="_Aid64awnEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:CallOperationAction" xmi:id="_WCyBsKwnEeKyht2NYD5a8A" name="o1" incoming="_ydJ7IKwoEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_WCyowKwnEeKyht2NYD5a8A">
-        <result xmi:id="_5gc-wKwoEeKyht2NYD5a8A" name="" outgoing="_6bZkEKwoEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
+        <result xmi:id="_5gc-wKwoEeKyht2NYD5a8A" name="" outgoing="_6bZkEKwoEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_xRbH0KwoEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_sz-sIKwoEeKyht2NYD5a8A" name="sendOrder" incoming="_6bZkEKwoEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_sz_TMKwoEeKyht2NYD5a8A"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_EQCt8KwpEeKyht2NYD5a8A" name="getAck" outgoing="_MqgY0KwpEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_EQDVAKwpEeKyht2NYD5a8A"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_LfdiAKwpEeKyht2NYD5a8A" name="o2" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_LfdiAawpEeKyht2NYD5a8A">
-        <argument xmi:id="_-zqvYKwpEeKyht2NYD5a8A" name="order" incoming="_MqgY0KwpEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
+        <argument xmi:id="_-zqvYKwpEeKyht2NYD5a8A" name="order" incoming="_MqgY0KwpEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_xRbH0KwoEeKyht2NYD5a8A"/>
       </node>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_WT3ugKwjEeKyht2NYD5a8A" name="e0" source="_D7jTYKwjEeKyht2NYD5a8A" target="_dr-vEKwkEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_iKsWEKwkEeKyht2NYD5a8A" name="e1" source="_dr-vEKwkEeKyht2NYD5a8A" target="_TeVEwKwjEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>

@@ -15,17 +15,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import no.ntnu.item.arctis.runtime.Block;
-import texiorder.commen.Order;
+import texiorder.commen.ClientOrder;
 
 public class UserClient extends Block {
 
 	private JFrame frame;
 	private JTextArea textArea;
 	private JTextField inputArea;
-	public String alias_client;
+	public String alias_user;
 	
 	public void show() {
-		frame = new JFrame("Client Console" + alias_client);
+		frame = new JFrame("Client Console" + alias_user);
 		Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension frameSize=new Dimension((int)(screenSize.width/4),(int)(screenSize.height/4));
 		int x=(int)(frameSize.width/4);
@@ -66,20 +66,20 @@ public class UserClient extends Block {
 		return id;
 	}
 	
-	public static String getAlias(Order order) {
+	public static String getAlias(ClientOrder order) {
 		return order.getAlias();
 	}
 
-	public Order createOrder() {
+	public ClientOrder createOrder() {
 		if(inputArea.getText() == null)
 			return null;
-		Order order = new Order();
-		order.setAlias(alias_client);
+		ClientOrder order = new ClientOrder();
+		order.setAlias(alias_user);
 		order.setAddress(inputArea.getText());
 		return order;
 	}
 
-	public void updateConsole(Order order) {
+	public void updateConsole(ClientOrder order) {
 		if(order == null)
 			return;
 		if(order.getAck() != null)

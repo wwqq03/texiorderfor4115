@@ -1,6 +1,6 @@
 package texiorder.commen;
 
-public class Order {
+public class ClientOrder {
 	
 	private String alias;
 	private String ack;

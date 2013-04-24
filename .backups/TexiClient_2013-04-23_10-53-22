@@ -18,33 +18,18 @@
       <node xmi:type="uml:CallOperationAction" xmi:id="_ZpnhUKwuEeKyht2NYD5a8A" name="o0" outgoing="_RxtNEKwyEeKyht2NYD5a8A" incoming="_dztjMKwuEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A" operation="_ZpoIYKwuEeKyht2NYD5a8A"/>
       <node xmi:type="uml:ForkNode" xmi:id="_QMoFoKwyEeKyht2NYD5a8A" name="f0" outgoing="_oLTsUKwyEeKyht2NYD5a8A _odUCUKwyEeKyht2NYD5a8A _otQi0KwyEeKyht2NYD5a8A _o7EVUKwyEeKyht2NYD5a8A _pPlz0KwyEeKyht2NYD5a8A _pgrj0KwyEeKyht2NYD5a8A" incoming="_RxtNEKwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A"/>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_WDz7cawyEeKyht2NYD5a8A" name="r0" incoming="_oLTsUKwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
-        <ownedComment xmi:id="_dM_IUKxYEeKyht2NYD5a8A">
-          <body>repeating</body>
-        </ownedComment>
         <trigger xmi:id="_WD1JkKwyEeKyht2NYD5a8A" name="LOGON" event="_WD1JkawyEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_YMNyYawyEeKyht2NYD5a8A" name="r1" incoming="_odUCUKwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
-        <ownedComment xmi:id="_dexb4KxYEeKyht2NYD5a8A">
-          <body>repeating</body>
-        </ownedComment>
         <trigger xmi:id="_YMOZcKwyEeKyht2NYD5a8A" name="LOGOFF" event="_YMPAgKwyEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_aH9GUawyEeKyht2NYD5a8A" name="r2" incoming="_pPlz0KwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
-        <ownedComment xmi:id="_d_2vsKxYEeKyht2NYD5a8A">
-          <body>repeating</body>
-        </ownedComment>
         <trigger xmi:id="_aH-UcKwyEeKyht2NYD5a8A" name="FREE" event="_aH-UcawyEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_b2YXAawyEeKyht2NYD5a8A" name="r3" incoming="_otQi0KwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
-        <ownedComment xmi:id="_eSvPcKxYEeKyht2NYD5a8A">
-          <body>repeating</body>
-        </ownedComment>
         <trigger xmi:id="_b2Y-EKwyEeKyht2NYD5a8A" name="BUSY" event="_b2ZlIKwyEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_d6LawawyEeKyht2NYD5a8A" name="r4" incoming="_pgrj0KwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
-        <ownedComment xmi:id="_duTssKxYEeKyht2NYD5a8A">
-          <body>repeating</body>
-        </ownedComment>
         <trigger xmi:id="_d6MB0KwyEeKyht2NYD5a8A" name="ACCEPT" event="_d6Mo4KwyEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_jirUUawyEeKyht2NYD5a8A" name="r5" outgoing="_jhlIUKxXEeKyht2NYD5a8A" incoming="_o7EVUKwyEeKyht2NYD5a8A" inPartition="_ASrMYKwcEeKyht2NYD5a8A">
