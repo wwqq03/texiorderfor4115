@@ -5,19 +5,10 @@
     >
     <dependencies>
         <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.0.0"/>
-        <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.0.0"/>
-        <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.0.0"/>
-        <dependency name="com.bitreactive.library.genericmapui" uuid="_ufQLEJFhEeKUbpabydPWtg" version="1.0.0"/>
-        <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.3.0"/>
-        <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.3.0"/>
-        <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.3.0"/>
-        <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.3.0"/>
         <dependency name="com.bitreactive.library.mqtt" uuid="_iVDkMOJLEeGulKFN7xtCsw" version="1.3.0"/>
         <dependency name="no.ntnu.item.arctis.library.swing" uuid="_b594QBxXEeGlCbgawtGx6g" version="1.0.5"/>
+        <dependency name="no.ntnu.item.ttm4115.examples.gui" uuid="_LK_SQJU9EeKBC7BCojxIpQ" version="1.0.0"/>
         <dependency name="no.ntnu.item.ttm4115.library.motionsimulator" uuid="_zyD0kKKQEeKC2Y_rDtDvdQ" version="1.1.1"/>
-        <dependency name="no.ntnu.item.ttm4115.library.motionsimulator" uuid="_zyD0kKKQEeKC2Y_rDtDvdQ" version="1.1.1"/>
-        <dependency name="no.ntnu.item.ttm4115.library.motionsimulator" uuid="_zyD0kKKQEeKC2Y_rDtDvdQ" version="1.1.1"/>
-        <dependency name="no.ntnu.item.ttm4115.library.routeplanner" uuid="_oo35oKKQEeKC2Y_rDtDvdQ" version="1.0.1"/>
         <dependency name="no.ntnu.item.ttm4115.library.routeplanner" uuid="_oo35oKKQEeKC2Y_rDtDvdQ" version="1.0.1"/>
     </dependencies>
 </project>

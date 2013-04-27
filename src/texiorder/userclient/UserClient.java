@@ -1,91 +1,59 @@
 package texiorder.userclient;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 import no.ntnu.item.arctis.runtime.Block;
-import texiorder.commen.ClientOrder;
+import texiorder.commen.UserOrder;
 
 public class UserClient extends Block {
 
-	private JFrame frame;
-	private JTextArea textArea;
-	private JTextField inputArea;
 	public String alias_user;
-	
-	public void show() {
-		frame = new JFrame("Client Console" + alias_user);
-		Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
-		Dimension frameSize=new Dimension((int)(screenSize.width/4),(int)(screenSize.height/4));
-		int x=(int)(frameSize.width/4);
-		int y=(int)(frameSize.height/4);
-		frame.setBounds(x,y,frameSize.width,frameSize.height);
-		
-		//frame.getContentPane().setLayout(new GridLayout(4,3,10,10));
-		Button button = new Button("Order");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				sendToBlock("CLICKED");
-			}
-
-		});
-		frame.getContentPane().add(button);
-		
-		textArea = new JTextArea();
-		textArea.setEditable(false);
-		
-		inputArea = new JTextField();
-		inputArea.setEnabled(true);
-
-		frame.getContentPane().setLayout(new BorderLayout());
-		frame.getContentPane().add(inputArea, BorderLayout.NORTH);
-		frame.getContentPane().add(new JScrollPane(textArea),BorderLayout.CENTER);
-		frame.getContentPane().add(button,BorderLayout.SOUTH);
-		frame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				sendToBlock("CLOSED");
-			}
-		});
-		frame.setVisible(true);
-		//frame.pack();
-	}
-
+	private UserOrder order;
+	public static String ORDER = "ORDER";
+	public static String QUEUE = "QUEUE";
+	public static String CANCEL = "CANCEL";
 	
 	public static String getAlias(String id) {
 		return id;
 	}
 	
-	public static String getAlias(ClientOrder order) {
+	public static String getAlias(UserOrder order) {
 		return order.getAlias();
 	}
 
-	public ClientOrder createOrder() {
-		if(inputArea.getText() == null)
+	public UserOrder createOrder(String address) {
+		if(address == null)
 			return null;
-		ClientOrder order = new ClientOrder();
+		order = new UserOrder();
 		order.setAlias(alias_user);
-		order.setAddress(inputArea.getText());
+		order.setAddress(address);
+		order.setCommand(UserClient.ORDER);
 		return order;
 	}
 
-	public void updateConsole(ClientOrder order) {
+	public String updateResponse(UserOrder order) {
 		if(order == null)
-			return;
-		if(order.getAck() != null)
-			textArea.append(order.getAck());
-		else if(order.getQueueNumber() > 0)
-			textArea.append("Your are in the position " + String.valueOf(order.getQueueNumber()) + " of the waiting list.");
+			return null;
+		else if(order.getAck() != null && order.getCommand().equals(UserClient.ORDER))
+			return "You got response: " + order.getAck();
+		else if(order.getQueueNumber() > 0 && order.getCommand().equals(UserClient.QUEUE))
+			return "You are in position: " + String.valueOf(order.getQueueNumber()) + "of the waiting list";
+		else 
+			return null;
+	}
+
+	public UserOrder requestQueue() {
+		if(order == null)
+			return null;
+		else
+			order.setCommand(UserClient.QUEUE);
+		return order;
+	}
+
+	public UserOrder cansel() {
+		if(order == null)
+			return null;
+		else
+			order.setCommand(UserClient.CANCEL);
+		return order;
 	}
 
 }

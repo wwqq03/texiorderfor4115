@@ -27,16 +27,16 @@
       <ownedOperation xmi:id="_0NADwK57EeKEk8DoblV25g" name="cansel"/>
       <ownedParameter xmi:id="_IZZ-wKwjEeKyht2NYD5a8A" name="start" type="_-51fQKwdEeKyht2NYD5a8A"/>
       <ownedParameter xmi:id="_9A0ZEKwmEeKyht2NYD5a8A" name="close" direction="out"/>
-      <ownedParameter xmi:id="_sz_TMKwoEeKyht2NYD5a8A" name="sendOrder" type="_ktnrAK6DEeKEk8DoblV25g" direction="out" isStream="true"/>
-      <ownedParameter xmi:id="_EQDVAKwpEeKyht2NYD5a8A" name="getAck" type="_ktnrAK6DEeKEk8DoblV25g" isStream="true"/>
-      <ownedParameter xmi:id="_fsa7oK57EeKEk8DoblV25g" name="requestQueue" type="_ktnrAK6DEeKEk8DoblV25g" direction="out" isStream="true"/>
-      <ownedParameter xmi:id="_CzfMAK58EeKEk8DoblV25g" name="cancelOrder" type="_ktnrAK6DEeKEk8DoblV25g" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_sz_TMKwoEeKyht2NYD5a8A" name="sendOrder" type="_IWpPkKwsEeKyht2NYD5a8A" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_EQDVAKwpEeKyht2NYD5a8A" name="getAck" type="_IWpPkKwsEeKyht2NYD5a8A" isStream="true"/>
+      <ownedParameter xmi:id="_fsa7oK57EeKEk8DoblV25g" name="requestQueue" type="_IWpPkKwsEeKyht2NYD5a8A" direction="out" isStream="true"/>
+      <ownedParameter xmi:id="_CzfMAK58EeKEk8DoblV25g" name="cancelOrder" type="_IWpPkKwsEeKyht2NYD5a8A" direction="out" isStream="true"/>
       <variable xmi:id="_OoBAoKwkEeKyht2NYD5a8A" name="alias_user" type="_-51fQKwdEeKyht2NYD5a8A"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_D7jTYKwjEeKyht2NYD5a8A" name="start" outgoing="_yxnZ8K5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A" parameter="_IZZ-wKwjEeKyht2NYD5a8A"/>
       <node xmi:type="uml:AddVariableValueAction" xmi:id="_dr-vEKwkEeKyht2NYD5a8A" name="sv0" incoming="_zHlp8K5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" variable="_OoBAoKwkEeKyht2NYD5a8A"/>
       <node xmi:type="uml:ActivityParameterNode" xmi:id="_9AzyAKwmEeKyht2NYD5a8A" name="close" incoming="_2b3eIK5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" parameter="_9A0ZEKwmEeKyht2NYD5a8A"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_sz-sIKwoEeKyht2NYD5a8A" name="sendOrder" incoming="_V_7doK56EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g" parameter="_sz_TMKwoEeKyht2NYD5a8A"/>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_EQCt8KwpEeKyht2NYD5a8A" name="getAck" outgoing="_f3KTYK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g" parameter="_EQDVAKwpEeKyht2NYD5a8A"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_sz-sIKwoEeKyht2NYD5a8A" name="sendOrder" incoming="_V_7doK56EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_sz_TMKwoEeKyht2NYD5a8A"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_EQCt8KwpEeKyht2NYD5a8A" name="getAck" outgoing="_f3KTYK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_EQDVAKwpEeKyht2NYD5a8A"/>
       <node xmi:type="uml:CallBehaviorAction" xmi:id="_1ZIWIK5vEeKEk8DoblV25g" name="c0" inPartition="_CuBNcKwcEeKyht2NYD5a8A" behavior="_97Ee4JU9EeKBC7BCojxIpQ">
         <argument xmi:id="_1ZJkQK5vEeKEk8DoblV25g" name="show" incoming="_zi-lcK5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A"/>
         <argument xmi:id="_1ZLZcK5vEeKEk8DoblV25g" name="string" incoming="_gSrxwK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A"/>
@@ -47,21 +47,21 @@
       </node>
       <node xmi:type="uml:ForkNode" xmi:id="_tpMHkK5yEeKEk8DoblV25g" name="f0" outgoing="_zHlp8K5yEeKEk8DoblV25g _zi-lcK5yEeKEk8DoblV25g" incoming="_yxnZ8K5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_VKZOsK54EeKEk8DoblV25g" name="o0" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_QQbPEK54EeKEk8DoblV25g">
-        <argument xmi:id="_VKdgIK54EeKEk8DoblV25g" name="order" incoming="_f3KTYK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g"/>
+        <argument xmi:id="_VKdgIK54EeKEk8DoblV25g" name="order" incoming="_f3KTYK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
         <result xmi:id="_VKc5EK54EeKEk8DoblV25g" name="" outgoing="_gSrxwK54EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:CallOperationAction" xmi:id="_PZIIwK56EeKEk8DoblV25g" name="o1" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_WCyowKwnEeKyht2NYD5a8A">
         <argument xmi:id="_nVvS4K56EeKEk8DoblV25g" name="address" incoming="_Uz8LoK56EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_-51fQKwdEeKyht2NYD5a8A"/>
-        <result xmi:id="_PZLzIK56EeKEk8DoblV25g" name="" outgoing="_V_7doK56EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g"/>
+        <result xmi:id="_PZLzIK56EeKEk8DoblV25g" name="" outgoing="_V_7doK56EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
       </node>
       <node xmi:type="uml:CallOperationAction" xmi:id="_tUdUEK56EeKEk8DoblV25g" name="o2" incoming="_NPEPgK57EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_tUd7IK56EeKEk8DoblV25g">
-        <result xmi:id="_LMRRUK57EeKEk8DoblV25g" name="" outgoing="_lLUNQK57EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g"/>
+        <result xmi:id="_LMRRUK57EeKEk8DoblV25g" name="" outgoing="_lLUNQK57EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
       </node>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_fsDvQK57EeKEk8DoblV25g" name="requestQueue" incoming="_lLUNQK57EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g" parameter="_fsa7oK57EeKEk8DoblV25g"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_fsDvQK57EeKEk8DoblV25g" name="requestQueue" incoming="_lLUNQK57EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_fsa7oK57EeKEk8DoblV25g"/>
       <node xmi:type="uml:CallOperationAction" xmi:id="_0M_csK57EeKEk8DoblV25g" name="o3" incoming="_Y6BlUK58EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" operation="_0NADwK57EeKEk8DoblV25g">
-        <result xmi:id="_-a0ioK57EeKEk8DoblV25g" name="" outgoing="_Z7JEEK58EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g"/>
+        <result xmi:id="_-a0ioK57EeKEk8DoblV25g" name="" outgoing="_Z7JEEK58EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A"/>
       </node>
-      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Czd94K58EeKEk8DoblV25g" name="cancelOrder" incoming="_Z7JEEK58EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_ktnrAK6DEeKEk8DoblV25g" parameter="_CzfMAK58EeKEk8DoblV25g"/>
+      <node xmi:type="uml:ActivityParameterNode" xmi:id="_Czd94K58EeKEk8DoblV25g" name="cancelOrder" incoming="_Z7JEEK58EeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A" type="_IWpPkKwsEeKyht2NYD5a8A" parameter="_CzfMAK58EeKEk8DoblV25g"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_yxnZ8K5yEeKEk8DoblV25g" name="e0" source="_D7jTYKwjEeKyht2NYD5a8A" target="_tpMHkK5yEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_zHlp8K5yEeKEk8DoblV25g" name="e1" source="_tpMHkK5yEeKEk8DoblV25g" target="_dr-vEKwkEeKyht2NYD5a8A" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>
       <edge xmi:type="uml:ObjectFlow" xmi:id="_zi-lcK5yEeKEk8DoblV25g" name="e2" source="_tpMHkK5yEeKEk8DoblV25g" target="_1ZJkQK5vEeKEk8DoblV25g" inPartition="_CuBNcKwcEeKyht2NYD5a8A"/>
@@ -127,7 +127,6 @@
         <appliedProfile href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_rE77YK4iEduZSuTiwKs5Lw"/>
       </profileApplication>
     </packagedElement>
-    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_ktnrAK6DEeKEk8DoblV25g" name="texiorder.commen.UserOrder"/>
     <profileApplication xmi:id="_Ct_YQawcEeKyht2NYD5a8A">
       <eAnnotations xmi:id="_Ct_YQqwcEeKyht2NYD5a8A" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://ARCTIS_PROFILES/arctis.profile.uml#_WFTqUXjGEdyxtoUMycQn9Q"/>

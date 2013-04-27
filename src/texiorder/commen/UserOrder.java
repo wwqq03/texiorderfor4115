@@ -1,11 +1,12 @@
 package texiorder.commen;
 
-public class ClientOrder {
+public class UserOrder {
 	
 	private String alias;
 	private String ack;
 	private int    queueNumber;
 	private String address;
+	private String command;
 	
 	public String getAlias() {
 		return alias;
@@ -30,6 +31,12 @@ public class ClientOrder {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getCommand() {
+		return command;
+	}
+	public void setCommand(String command) {
+		this.command = command;
 	}
 	
 
