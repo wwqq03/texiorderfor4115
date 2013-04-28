@@ -2,14 +2,12 @@ package texiorder.userclient;
 
 import no.ntnu.item.arctis.runtime.Block;
 import texiorder.commen.UserOrder;
+import texiorder.commen.UserResponse;
 
 public class UserClient extends Block {
 
 	public String alias_user;
 	private UserOrder order;
-	public static String ORDER = "ORDER";
-	public static String QUEUE = "QUEUE";
-	public static String CANCEL = "CANCEL";
 	
 	public static String getAlias(String id) {
 		return id;
@@ -25,17 +23,17 @@ public class UserClient extends Block {
 		order = new UserOrder();
 		order.setAlias(alias_user);
 		order.setAddress(address);
-		order.setCommand(UserClient.ORDER);
+		order.setCommand(UserOrder.ORDER);
 		return order;
 	}
 
-	public String updateResponse(UserOrder order) {
-		if(order == null)
+	public String updateResponse(UserResponse res) {
+		if(res == null)
 			return null;
-		else if(order.getAck() != null && order.getCommand().equals(UserClient.ORDER))
-			return "You got response: " + order.getAck();
-		else if(order.getQueueNumber() > 0 && order.getCommand().equals(UserClient.QUEUE))
-			return "You are in position: " + String.valueOf(order.getQueueNumber()) + "of the waiting list";
+		else if(res.getAck() != null && res.getCommand().equals(UserResponse.ORDER))
+			return "You got response: " + res.getAck();
+		else if(res.getQueueNumber() > 0 && res.getCommand().equals(UserResponse.QUEUE))
+			return "You are in position: " + String.valueOf(res.getQueueNumber()) + "of the waiting list";
 		else 
 			return null;
 	}
@@ -44,7 +42,7 @@ public class UserClient extends Block {
 		if(order == null)
 			return null;
 		else
-			order.setCommand(UserClient.QUEUE);
+			order.setCommand(UserOrder.QUEUE);
 		return order;
 	}
 
@@ -52,7 +50,7 @@ public class UserClient extends Block {
 		if(order == null)
 			return null;
 		else
-			order.setCommand(UserClient.CANCEL);
+			order.setCommand(UserOrder.CANCEL);
 		return order;
 	}
 
