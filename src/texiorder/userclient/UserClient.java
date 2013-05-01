@@ -33,7 +33,7 @@ public class UserClient extends Block {
 		else if(res.getAck() != null && res.getCommand().equals(UserResponse.ORDER))
 			return "You got response: " + res.getAck();
 		else if(res.getQueueNumber() > 0 && res.getCommand().equals(UserResponse.QUEUE))
-			return "You are in position: " + String.valueOf(res.getQueueNumber()) + "of the waiting list";
+			return "You are in position: " + String.valueOf(res.getQueueNumber()) + " of the waiting list";
 		else 
 			return null;
 	}

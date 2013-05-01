@@ -1,5 +1,6 @@
 package texiorder.singlesessiontaxisimulator;
 
+import texiorder.commen.GeoInfoCalculator;
 import texiorder.commen.TaxiOrder;
 import texiorder.commen.TextIdGenerator;
 
@@ -19,6 +20,8 @@ public class SingleSessionTaxiSimulator extends Block {
 	private double currentLat;
 	private double currentLng;
 	
+	private boolean isRunning = false;
+	
 	public MQTTConfigParam initMQTT() {
 		MQTTConfigParam param = new MQTTConfigParam("broker.mqttdashboard.com", 1883, "Test Client " + taxiId);
 		param.setDefaultPublishTopic("generic-map-ui-group21");
@@ -27,6 +30,14 @@ public class SingleSessionTaxiSimulator extends Block {
 	}
 
 	public Message createMessage(String messageString) {
+		// if is stopped, send empty message
+		if (isRunning = false) {
+			System.out.println("Taxi stopped, stop creating valid message.");
+			return new Message("".getBytes());
+		}
+		
+		System.out.println("Creating message: " + messageString);
+	
 		Message message = new Message(messageString.getBytes());
 		
 		// update current 
@@ -38,7 +49,12 @@ public class SingleSessionTaxiSimulator extends Block {
 	}
 
 	public Journey createJourney(String destination) {
-		Journey journey = new Journey(currentAddress, destination, taxiId);
+		Journey journey = new Journey(currentAddress.replace(" ", "+"), destination.replace(" ", "+"), taxiId);
+		
+		// start the taxi!
+		isRunning = true;
+		
+		System.out.println("Journey from " + currentAddress + " to " + destination + " created.");
 		
 		return journey;
 	}
@@ -46,6 +62,8 @@ public class SingleSessionTaxiSimulator extends Block {
 	public void setTaxiId() {
 		// init taxiId
 		taxiId = TextIdGenerator.getNextId();
+		
+		System.out.println("New taxi simulator generated with id " + taxiId + "!");
 	}
 	
 	private double[] getLatAndLngFromMessageString(String messageString) {
@@ -57,7 +75,18 @@ public class SingleSessionTaxiSimulator extends Block {
 	}
 
 	public double[] updatePosition() {
+		// if is running, update the position
+		if (isRunning == true) {
+			// update currentAddress
+			GeoInfoCalculator gif = new GeoInfoCalculator();
+			currentAddress = gif.getAddressFromLatLng(currentLat, currentLng);
+		}
+		
 		return new double[]{currentLat, currentLng};
+	}
+
+	public void stop() {
+		isRunning = false;
 	}
 	
 }

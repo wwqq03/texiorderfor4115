@@ -24,6 +24,7 @@ public class Dispatcher extends Block {
 	}
 
 	public void registerTaxi(TaxiRequest taxiRequest) {
+		System.out.println("In Dispatcher.registerTaxi");
 		if(taxiRequest == null)
 			return;
 		Taxi taxi = new Taxi();
@@ -40,6 +41,7 @@ public class Dispatcher extends Block {
 	}
 
 	public void unregisterTaxi(TaxiRequest taxiRequest) {
+		System.out.println("In Dispatcher.unregisterTaxi");
 		if(taxiRequest == null)
 			return;
 		String taxiId = taxiRequest.getAlias();
@@ -47,13 +49,14 @@ public class Dispatcher extends Block {
 		while(i.hasNext()){
 			Taxi t = i.next();
 			if(t.getId().equals(taxiId)){
-				taxis.remove(i);
+				taxis.remove(t);
 				return;
 			}
 		}
 	}
 
 	public void setTaxi2Free(TaxiRequest taxiRequest) {
+		System.out.println("In Dispatcher.setTaxi2Free");
 		if(taxiRequest == null)
 			return;
 		String taxiId = taxiRequest.getAlias();
@@ -68,6 +71,7 @@ public class Dispatcher extends Block {
 	}
 
 	public User cancelUser(UserOrder or) {
+		System.out.println("In Dispatcher.cancelUser");
 		if(or == null)
 			return null;
 		User user = null;
@@ -83,6 +87,7 @@ public class Dispatcher extends Block {
 	}
 
 	public String isTaxiAvailible(UserOrder uOrder) {
+		System.out.println("In Dispatcher.isTaxiAvailible");
 		if(uOrder == null || !uOrder.getCommand().equals(UserOrder.ORDER))
 			return null;
 		String userId = uOrder.getAlias();
@@ -116,6 +121,7 @@ public class Dispatcher extends Block {
 	}
 	
 	private Taxi getAFreeTaxi(String userLocation) {
+		System.out.println("In Dispatcher.getAFreeTaxi");
 		Iterator<Taxi> i = taxis.iterator();
 		Taxi preferedTaxi = null;
 		double minDis = 0;
@@ -125,7 +131,7 @@ public class Dispatcher extends Block {
 				continue;
 			double[] taxiLocation = t.getCurrent();
 			GeoInfoCalculator dc = new GeoInfoCalculator();
-			double distance = dc.calculateDistance(userLocation, taxiLocation[1], taxiLocation[2]);
+			double distance = dc.calculateDistance(userLocation, taxiLocation[0], taxiLocation[1]);
 			if(minDis == 0 || distance < minDis){
 				minDis = distance;
 				preferedTaxi = t;
@@ -135,6 +141,7 @@ public class Dispatcher extends Block {
 	}
 
 	public TaxiOrder cancelTaxiOrder(User user) {
+		System.out.println("In Dispatcher.cancelTaxiOrder");
 		if(user == null || user.getWaitForTaxi() == null)
 			return null;
 		TaxiOrder order = new TaxiOrder();
@@ -145,6 +152,7 @@ public class Dispatcher extends Block {
 	}
 
 	public User checkWaitingUser() {
+		System.out.println("In Dispatcher.checkWaitingUser");
 		Iterator<User> i = users.iterator();
 		User waitingUser = null;
 		while(i.hasNext()) {
@@ -158,6 +166,7 @@ public class Dispatcher extends Block {
 	}
 
 	public TaxiOrder sentNewTaxiOrder(User user) {
+		System.out.println("In Dispatcher.sentNewTaxiOrder");
 		if(user == null)
 			return null;
 		TaxiOrder tOrder = new TaxiOrder();
@@ -168,10 +177,12 @@ public class Dispatcher extends Block {
 		tOrder.setPickup(user.getAddress());
 		user.setProcessing();
 		user.setWaitForTaxi(preferedTaxi.getId());
+		preferedTaxi.setBusy();
 		return tOrder;
 	}
 
 	public UserResponse sendUserQueue(String userId) {
+		System.out.println("In Dispatcher.sendUserQueue");
 		if(userId == null)
 			return null;
 		UserResponse response = new UserResponse();
@@ -192,27 +203,38 @@ public class Dispatcher extends Block {
 			}
 		}
 		if(flag)
-			return null;
-		return response;
+			return response;
+		return null;
 	}
 
 	public String getQueueRequest(UserOrder or) {
+		System.out.println("In Dispatcher.getQueueRequest");
 		if(or == null)
 			return null;
 		return or.getAlias();
 	}
 
 	public UserResponse processAccept(TaxiResponse response) {
+		System.out.println("In Dispatcher.processAccept");
 		if(response == null || response.getAck()!= TaxiResponse.RESPONSE_OK)
 			return null;
 		Iterator<User> i = users.iterator();
 		while(i.hasNext()){
 			User u = i.next();
 			if(u.getId().equals(response.getCustomer())){
+				Iterator<Taxi> itaxi = taxis.iterator();
+				while(itaxi.hasNext()){
+					Taxi t = itaxi.next();
+					if(t.getId().equals(response.getAlias())){
+						t.setBusy();
+						break;
+					}
+				}
 				UserResponse userResponse = new UserResponse();
 				userResponse.setAlias(u.getId());
 				userResponse.setAck("Taxi " + response.getAlias() + " will serve for you! Please wait!");
 				userResponse.setCommand(UserResponse.ORDER);
+				users.remove(u);
 				return userResponse;
 			}
 		}
@@ -220,12 +242,30 @@ public class Dispatcher extends Block {
 	}
 
 	public boolean rejectOrder(Object ob) {
+		System.out.println("In Dispatcher.rejectOrder");
 		if(ob instanceof TaxiResponse){
 			TaxiResponse response = (TaxiResponse)ob;
+			Iterator<Taxi> i = taxis.iterator();
+			while(i.hasNext()){
+				Taxi taxi = i.next();
+				if(taxi.getId().equals(response.getAlias())){
+					taxi.setBusy();
+					break;
+				}
+			}
 			if(response.getAck() != TaxiResponse.RESPONSE_BUSY)
 				return false;
-			else
+			else{
+				Iterator<User> iuser = users.iterator();
+				while(iuser.hasNext()){
+					User u = iuser.next();
+					if(u.getId().equals(response.getCustomer())){
+						u.setWaiting();
+						u.setWaitForTaxi(null);
+					}
+				}
 				return true;
+			}
 		}
 		else if(ob instanceof TaxiRequest){
 			TaxiRequest request = (TaxiRequest)ob;

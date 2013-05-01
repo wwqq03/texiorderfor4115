@@ -6,6 +6,7 @@ import com.bitreactive.library.mqtt.mqtt.MQTT.Message;
 import no.ntnu.item.arctis.runtime.Block;
 import no.ntnu.item.ttm4115.library.routeplanner.routeplanner.Journey;
 
+
 public class TaxiSimulator extends Block {
 	
 	private static final String fromAddress[] = new String[]{"Oslo", "Boston", "Shanghai"};
