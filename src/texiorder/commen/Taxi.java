@@ -2,7 +2,7 @@ package texiorder.commen;
 
 public class Taxi {
 	private String   id;
-	private String current;
+	private double[] current;
 	private boolean  busy;
 	public String getId() {
 		return id;
@@ -10,10 +10,10 @@ public class Taxi {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getCurrent() {
+	public double[] getCurrent() {
 		return current;
 	}
-	public void setCurrent(String current) {
+	public void setCurrent(double[] current) {
 		this.current = current;
 	}
 	public boolean isBusy() {

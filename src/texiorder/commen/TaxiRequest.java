@@ -8,13 +8,13 @@ package texiorder.commen;
 
 public class TaxiRequest extends TaxiMessage {
 	
-	private String current;
+	private double[] current;
 
-	public String getCurrent() {
+	public double[] getCurrent() {
 		return current;
 	}
 
-	public void setCurrent(String current) {
+	public void setCurrent(double[] current) {
 		this.current = current;
 	}
 	

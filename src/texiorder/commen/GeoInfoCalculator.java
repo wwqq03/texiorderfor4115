@@ -21,7 +21,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 
-public class DistanceCalculator {
+public class GeoInfoCalculator {
 	
 	public double calculateDistance(String address1, String address2) {
 		String query1 = createQuery(address1);
@@ -33,7 +33,16 @@ public class DistanceCalculator {
 		return calculateDistance(point1[0], point1[1], point2[0], point2[1]);
 	}
 	
-	public double[] parseLocation(String xmlString) {
+	public double calculateDistance(String address1, double lat, double lng) {
+		String query1 = createQuery(address1);
+		
+		double[] point1 = parseLocation(query(query1));
+		
+		return calculateDistance(point1[0], point1[1], lat, lng);
+	}
+	
+	
+	private double[] parseLocation(String xmlString) {
 		double[] result = new double[2];
 		double lat = 0.0;
 		double lng = 0.0;
@@ -132,7 +141,7 @@ public class DistanceCalculator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		DistanceCalculator dc = new DistanceCalculator();
+		GeoInfoCalculator dc = new GeoInfoCalculator();
 		double distance = dc.calculateDistance("Trondheim", "Oslo");
 		System.out.println("Distance: " + distance);
 	}

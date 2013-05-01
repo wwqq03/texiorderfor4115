@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import no.ntnu.item.arctis.runtime.Block;
-import texiorder.commen.DistanceCalculator;
+import texiorder.commen.GeoInfoCalculator;
 import texiorder.commen.Taxi;
 import texiorder.commen.TaxiOrder;
 import texiorder.commen.TaxiRequest;
@@ -123,9 +123,9 @@ public class Dispatcher extends Block {
 			Taxi t = i.next();
 			if(t.isBusy())
 				continue;
-			String taxiLocation = t.getCurrent();
-			DistanceCalculator dc = new DistanceCalculator();
-			double distance = dc.calculateDistance(userLocation, taxiLocation);
+			double[] taxiLocation = t.getCurrent();
+			GeoInfoCalculator dc = new GeoInfoCalculator();
+			double distance = dc.calculateDistance(userLocation, taxiLocation[1], taxiLocation[2]);
 			if(minDis == 0 || distance < minDis){
 				minDis = distance;
 				preferedTaxi = t;

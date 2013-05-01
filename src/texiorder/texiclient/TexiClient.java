@@ -12,11 +12,13 @@ public class TexiClient extends Block {
 	public static String STATE_BUSY    = "Busy";
 	public static String STATE_FREE    = "Free";
 	
+	private static final double[] initAddress = new double[]{63.4120387, 10.4302632};
+	
 	public String        alias_taxi;
 	private TaxiOrder    order;
 	private TaxiRequest  request;
 	private TaxiResponse response;
-	private String       current;
+	public double[] current;
 	
 	public static String getAlias(String alias) {
 		return alias;
@@ -57,7 +59,7 @@ public class TexiClient extends Block {
 		request.setAlias(alias_taxi);
 		request.setCommand(TaxiRequest.COMMAND_LOGON);
 //Need to fix
-		current = "Herman Kragsvei";
+		current = initAddress;
 //end
 		request.setCurrent(current);
 		return request;
@@ -90,7 +92,7 @@ public class TexiClient extends Block {
 			return null;
 		request.setCommand(TaxiRequest.COMMAND_FREE);
 //Need to fix
-		current = "Herman Kragsvei";
+		//current = initAddress;
 //end
 		request.setCurrent(current);
 		return request;
@@ -100,5 +102,13 @@ public class TexiClient extends Block {
 		if(or == null || or.getCommand() != TaxiOrder.COMMAND_CANCEL)
 			return null;
 		return "User " + or.getAlias() + " canceled order!";
+	}
+
+	public String sendDestination() {
+		return order.getPickup();
+	}
+
+	public void updatePosition(double[] position) {
+		current = position;
 	}
 }

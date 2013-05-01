@@ -13,8 +13,8 @@ public class UserClient extends Block {
 		return id;
 	}
 	
-	public static String getAlias(UserOrder order) {
-		return order.getAlias();
+	public static String getAlias(UserResponse res) {
+		return res.getAlias();
 	}
 
 	public UserOrder createOrder(String address) {
