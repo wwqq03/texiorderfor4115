@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="Taxi Fleet" 
+    uuid="_MJDkYa2kEeK1s7slReweJQ" 
+    status="under construction" 
+    type="system" 
+    >
+    <required>
+        <block name="c0" uuid="__m9lcGJOEeGrjfXhcH6cAA"/>
+        <block name="c1" uuid="_bmITMK2gEeK1s7slReweJQ"/>
+    </required>
+</block>

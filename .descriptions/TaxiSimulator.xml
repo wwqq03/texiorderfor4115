@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<block
+    name="Taxi Simulator" 
+    uuid="_bmITMK2gEeK1s7slReweJQ" 
+    status="under construction" 
+    session="multi_session" 
+    type="block" 
+    >
+    <required>
+        <block name="c0" uuid="_AB69sObWEeG9SpMqxrlJPg"/>
+        <block name="c1" uuid="_uHYJsaKQEeKC2Y_rDtDvdQ"/>
+        <block name="c2" uuid="_zt4MEJFhEeKUbpabydPWtg"/>
+        <block name="c3" uuid="_2T3C8aKQEeKC2Y_rDtDvdQ"/>
+    </required>
+</block>
