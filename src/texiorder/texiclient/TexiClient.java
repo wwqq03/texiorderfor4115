@@ -46,6 +46,7 @@ public class TexiClient extends Block {
 		if(response == null)
 			return null;
 		response.setAck("200");
+		response.setCustomer(order.getCustomer());
 		TaxiResponse res = response;
 		response = null;
 		return res;
@@ -95,15 +96,9 @@ public class TexiClient extends Block {
 		return request;
 	}
 
-	public void sendReject() {
-	}
-
 	public String cancelOrder(TaxiOrder or) {
 		if(or == null || or.getCommand() != TaxiOrder.COMMAND_CANCEL)
 			return null;
 		return "User " + or.getAlias() + " canceled order!";
-	}
-
-	public void rejectOrder() {
 	}
 }

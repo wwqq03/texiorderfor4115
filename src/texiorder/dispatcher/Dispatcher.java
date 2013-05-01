@@ -7,6 +7,7 @@ import no.ntnu.item.arctis.runtime.Block;
 import texiorder.commen.Taxi;
 import texiorder.commen.TaxiOrder;
 import texiorder.commen.TaxiRequest;
+import texiorder.commen.TaxiResponse;
 import texiorder.commen.User;
 import texiorder.commen.UserOrder;
 import texiorder.commen.UserResponse;
@@ -164,9 +165,6 @@ public class Dispatcher extends Block {
 		return tOrder;
 	}
 
-	public void putUserIntoList(texiorder.commen.UserOrder uOrder) {
-	}
-
 	public UserResponse sendUserQueue(String userId) {
 		if(userId == null)
 			return null;
@@ -190,5 +188,28 @@ public class Dispatcher extends Block {
 		if(flag)
 			return null;
 		return response;
+	}
+
+	public String getQueueRequest(UserOrder or) {
+		if(or == null)
+			return null;
+		return or.getAlias();
+	}
+
+	public UserResponse processAccept(TaxiResponse response) {
+		if(response == null || response.getAck()!= "200")
+			return null;
+		Iterator<User> i = users.iterator();
+		while(i.hasNext()){
+			User u = i.next();
+			if(u.getId().equals(response.getCustomer())){
+				UserResponse userResponse = new UserResponse();
+				userResponse.setAlias(u.getId());
+				userResponse.setAck("Taxi " + response.getAlias() + " will serve for you! Please wait!");
+				userResponse.setCommand(UserResponse.ORDER);
+				return userResponse;
+			}
+		}
+		return null;
 	}
 }
