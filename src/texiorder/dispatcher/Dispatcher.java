@@ -66,9 +66,9 @@ public class Dispatcher extends Block {
 		}
 	}
 
-	public void cancelUser(UserOrder or) {
+	public String cancelUser(UserOrder or) {
 		if(or == null)
-			return;
+			return null;
 		Iterator<User> i = users.iterator();
 		while(i.hasNext()){
 			User user = i.next();
@@ -77,6 +77,7 @@ public class Dispatcher extends Block {
 				break;
 			}
 		}
+		return or.getAlias();
 	}
 
 	public String isTaxiAvailible(UserOrder uOrder) {
@@ -162,6 +163,7 @@ public class Dispatcher extends Block {
 		tOrder.setCustomer(user.getId());
 		tOrder.setPickup(user.getAddress());
 		user.setProcessing();
+		user.setWaitForTaxi(preferedTaxi.getId());
 		return tOrder;
 	}
 

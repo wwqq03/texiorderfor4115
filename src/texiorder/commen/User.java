@@ -3,6 +3,7 @@ package texiorder.commen;
 public class User {
 	private String   id;
 	private String address;
+	private String waitForTaxi;
 	private boolean inWaitingList;
 	public String getId() {
 		return id;
@@ -15,6 +16,12 @@ public class User {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getWaitForTaxi() {
+		return waitForTaxi;
+	}
+	public void setWaitForTaxi(String waitForTaxi) {
+		this.waitForTaxi = waitForTaxi;
 	}
 	public boolean isInWaitingList() {
 		return inWaitingList;
