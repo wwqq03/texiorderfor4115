@@ -83,7 +83,7 @@ public class Dispatcher extends Block {
 			return null;
 		String userId = uOrder.getAlias();
 		Iterator<User> i = users.iterator();
-		User u;
+		User u = null;
 		boolean flag = false;
 		//add user to userlist
 		while(i.hasNext()) {
@@ -114,13 +114,13 @@ public class Dispatcher extends Block {
 	private Taxi getAFreeTaxi(String userLocation) {
 		Iterator<Taxi> i = taxis.iterator();
 		Taxi preferedTaxi = null;
-		float minDis = 0;
+		double minDis = 0;
 		while(i.hasNext()) {
 			Taxi t = i.next();
 			if(t.isBusy())
 				continue;
 			String taxiLocation = t.getCurrent();
-			float distance = getDistance(userLocation, taxiLocation);
+			double distance = getDistance(userLocation, taxiLocation);
 			if(minDis == 0 || distance < minDis){
 				minDis = distance;
 				preferedTaxi = t;
