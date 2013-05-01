@@ -45,7 +45,7 @@ public class TexiClient extends Block {
 	public TaxiResponse acceptOrder() {
 		if(response == null)
 			return null;
-		response.setAck("200");
+		response.setAck(TaxiResponse.RESPONSE_OK);
 		response.setCustomer(order.getCustomer());
 		TaxiResponse res = response;
 		response = null;
@@ -74,7 +74,7 @@ public class TexiClient extends Block {
 
 	public Object sendBusy() {
 		if(response != null) {
-			response.setAck("408");
+			response.setAck(TaxiResponse.RESPONSE_BUSY);
 			TaxiResponse res = response;
 			response = null;
 			return res;

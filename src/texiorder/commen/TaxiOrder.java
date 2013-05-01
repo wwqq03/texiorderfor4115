@@ -8,7 +8,7 @@ package texiorder.commen;
 
 public class TaxiOrder extends TaxiMessage{
 	
-	private String   customer;
+	private String customer;
 	private String pickup;	
 	
 	public String getPickup() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import no.ntnu.item.arctis.runtime.Block;
+import texiorder.commen.DistanceCalculator;
 import texiorder.commen.Taxi;
 import texiorder.commen.TaxiOrder;
 import texiorder.commen.TaxiRequest;
@@ -66,18 +67,19 @@ public class Dispatcher extends Block {
 		}
 	}
 
-	public String cancelUser(UserOrder or) {
+	public User cancelUser(UserOrder or) {
 		if(or == null)
 			return null;
+		User user = null;
 		Iterator<User> i = users.iterator();
 		while(i.hasNext()){
-			User user = i.next();
+			user = i.next();
 			if(user.getId().equals(or.getAlias())) {
 				users.remove(user);
 				break;
 			}
 		}
-		return or.getAlias();
+		return user;
 	}
 
 	public String isTaxiAvailible(UserOrder uOrder) {
@@ -122,7 +124,8 @@ public class Dispatcher extends Block {
 			if(t.isBusy())
 				continue;
 			String taxiLocation = t.getCurrent();
-			double distance = getDistance(userLocation, taxiLocation);
+			DistanceCalculator dc = new DistanceCalculator();
+			double distance = dc.calculateDistance(userLocation, taxiLocation);
 			if(minDis == 0 || distance < minDis){
 				minDis = distance;
 				preferedTaxi = t;
@@ -131,13 +134,14 @@ public class Dispatcher extends Block {
 		return preferedTaxi;
 	}
 
-	public TaxiOrder cancelTaxiOrder(Object ob) {
-		if(ob == null || !(ob instanceof String))
+	public TaxiOrder cancelTaxiOrder(User user) {
+		if(user == null || user.getWaitForTaxi() == null)
 			return null;
-		String user = (String)ob;
 		TaxiOrder order = new TaxiOrder();
 		order.setCommand(TaxiOrder.COMMAND_CANCEL);
-		order.setAlias(alias)
+		order.setAlias(user.getWaitForTaxi());
+		order.setCustomer(user.getId());
+		return order;
 	}
 
 	public User checkWaitingUser() {
@@ -199,7 +203,7 @@ public class Dispatcher extends Block {
 	}
 
 	public UserResponse processAccept(TaxiResponse response) {
-		if(response == null || response.getAck()!= "200")
+		if(response == null || response.getAck()!= TaxiResponse.RESPONSE_OK)
 			return null;
 		Iterator<User> i = users.iterator();
 		while(i.hasNext()){
@@ -213,5 +217,29 @@ public class Dispatcher extends Block {
 			}
 		}
 		return null;
+	}
+
+	public boolean rejectOrder(Object ob) {
+		if(ob instanceof TaxiResponse){
+			TaxiResponse response = (TaxiResponse)ob;
+			if(response.getAck() != TaxiResponse.RESPONSE_BUSY)
+				return false;
+			else
+				return true;
+		}
+		else if(ob instanceof TaxiRequest){
+			TaxiRequest request = (TaxiRequest)ob;
+			Iterator<Taxi> i = taxis.iterator();
+			while(i.hasNext()){
+				Taxi taxi = i.next();
+				if(taxi.getId().equals(request.getAlias())){
+					taxi.setBusy();
+					break;
+				}
+			}
+			return false;
+		}
+		else
+			return false;
 	}
 }
