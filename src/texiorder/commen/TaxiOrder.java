@@ -9,12 +9,12 @@ package texiorder.commen;
 public class TaxiOrder extends TaxiMessage{
 	
 	private String   customer;
-	private Location pickup;	
+	private String pickup;	
 	
-	public Location getPickup() {
+	public String getPickup() {
 		return pickup;
 	}
-	public void setPickup(Location pickup) {
+	public void setPickup(String pickup) {
 		this.pickup = pickup;
 	}
 	public String getCustomer() {

@@ -3,6 +3,7 @@
     name="TexiClient" 
     uuid="_ASp-QKwcEeKyht2NYD5a8A" 
     status="under construction" 
+    session="multi_session" 
     type="block" 
     >
     <required>
