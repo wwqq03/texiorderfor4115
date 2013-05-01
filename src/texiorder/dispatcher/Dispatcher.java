@@ -170,6 +170,25 @@ public class Dispatcher extends Block {
 	public UserResponse sendUserQueue(String userId) {
 		if(userId == null)
 			return null;
-		
+		UserResponse response = new UserResponse();
+		response.setCommand(UserResponse.QUEUE);
+		response.setAlias(userId);
+		int que = 0;
+		Iterator<User> i = users.iterator();
+		boolean flag = false;
+		while(i.hasNext()) {
+			User u = i.next();
+			if(u.isInWaitingList()){
+				que ++;
+			}
+			if(u.getId().equals(userId)){
+				response.setQueueNumber(que);
+				flag = true;
+				break;
+			}
+		}
+		if(flag)
+			return null;
+		return response;
 	}
 }
