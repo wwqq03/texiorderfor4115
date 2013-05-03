@@ -2,6 +2,6 @@
 <deployment>
         <mapping role="component" platform="Java Standard Edition - J2SE">
         <value name="libraryArchiveHandling" value="Copy libraries as Java archives"/>
-        <value name="loggingLevel" value="warning"/>
+        <value name="loggingLevel" value="error"/>
         <value name="loggingFramework" value="SLF4J and Logback"/>
     </mapping></deployment>

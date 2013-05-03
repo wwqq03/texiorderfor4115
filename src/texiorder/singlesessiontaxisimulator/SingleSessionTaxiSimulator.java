@@ -40,10 +40,18 @@ public class SingleSessionTaxiSimulator extends Block {
 	
 		Message message = new Message(messageString.getBytes());
 		
-		// update current 
+		// update currentLat/Lng 
 		double[] position = getLatAndLngFromMessageString(messageString);
 		currentLat = position[0];
 		currentLng = position[1];
+		
+		// update currentAddress
+		GeoInfoCalculator gif = new GeoInfoCalculator();
+		currentAddress = gif.getAddressFromLatLng(currentLat, currentLng);
+		
+		System.out.println("currentAddress updated: " + currentAddress);
+		
+		System.out.println("Message returned.");
 		
 		return message;
 	}
@@ -60,10 +68,13 @@ public class SingleSessionTaxiSimulator extends Block {
 	}
 
 	public void setTaxiId() {
-		// init taxiId
-		taxiId = TextIdGenerator.getNextId();
-		
-		System.out.println("New taxi simulator generated with id " + taxiId + "!");
+		// init taxiId if not initiated
+		if (taxiId.length() == 0) {
+			taxiId = TextIdGenerator.getNextId();
+			System.out.println("New taxi simulator generated with id " + taxiId + "!");
+		} else {
+			System.out.println("Taxi Id already set (" + taxiId +"), do not set it again");
+		}
 	}
 	
 	private double[] getLatAndLngFromMessageString(String messageString) {
@@ -75,18 +86,16 @@ public class SingleSessionTaxiSimulator extends Block {
 	}
 
 	public double[] updatePosition() {
-		// if is running, update the position
-		if (isRunning == true) {
-			// update currentAddress
-			GeoInfoCalculator gif = new GeoInfoCalculator();
-			currentAddress = gif.getAddressFromLatLng(currentLat, currentLng);
-		}
-		
 		return new double[]{currentLat, currentLng};
 	}
 
 	public void stop() {
+		System.out.println("Taxi " + taxiId + " stopped!");
 		isRunning = false;
+	}
+
+	public void finish() {
+		System.out.println("Single Session Taxi Simulator finished. TaxiId: " + taxiId);
 	}
 	
 }

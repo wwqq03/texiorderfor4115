@@ -80,10 +80,10 @@ public class Dispatcher extends Block {
 			user = i.next();
 			if(user.getId().equals(or.getAlias())) {
 				users.remove(user);
-				break;
+				return user;
 			}
 		}
-		return user;
+		return null;
 	}
 
 	public String isTaxiAvailible(UserOrder uOrder) {
@@ -148,6 +148,15 @@ public class Dispatcher extends Block {
 		order.setCommand(TaxiOrder.COMMAND_CANCEL);
 		order.setAlias(user.getWaitForTaxi());
 		order.setCustomer(user.getId());
+		//set the taxi back to free
+		Iterator<Taxi> i = taxis.iterator();
+		while(i.hasNext()){
+			Taxi t = i.next();
+			if(t.getId().equals(user.getWaitForTaxi())){
+				t.setFree();
+				break;
+			}
+		}
 		return order;
 	}
 
