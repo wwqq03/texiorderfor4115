@@ -65,6 +65,7 @@ public class Dispatcher extends Block {
 			Taxi t = i.next();
 			if(t.getId().equals(taxiId)){
 				t.setFree();
+				t.setCustomer(null);
 				return;
 			}
 		}
@@ -81,6 +82,20 @@ public class Dispatcher extends Block {
 			if(user.getId().equals(or.getAlias())) {
 				users.remove(user);
 				return user;
+			}
+		}
+		//if there is no this user in the user list, it means that order is already taken by taxi, so need to create a new user object
+		if(user == null){
+			user = new User();
+			user.setAddress(or.getAddress());
+			user.setId(or.getAlias());
+			Iterator<Taxi> itaxi = taxis.iterator();
+			while(itaxi.hasNext()){
+				Taxi t = itaxi.next();
+				if( t.getCustomer() != null && t.getCustomer().equals(user.getId())){
+					user.setWaitForTaxi(t.getId());
+					return user;
+				}
 			}
 		}
 		return null;
@@ -154,6 +169,7 @@ public class Dispatcher extends Block {
 			Taxi t = i.next();
 			if(t.getId().equals(user.getWaitForTaxi())){
 				t.setFree();
+				t.setCustomer(null);
 				break;
 			}
 		}
@@ -236,6 +252,7 @@ public class Dispatcher extends Block {
 					Taxi t = itaxi.next();
 					if(t.getId().equals(response.getAlias())){
 						t.setBusy();
+						t.setCustomer(response.getCustomer());
 						break;
 					}
 				}
@@ -259,6 +276,7 @@ public class Dispatcher extends Block {
 				Taxi taxi = i.next();
 				if(taxi.getId().equals(response.getAlias())){
 					taxi.setBusy();
+					taxi.setCustomer(null);
 					break;
 				}
 			}
@@ -283,6 +301,7 @@ public class Dispatcher extends Block {
 				Taxi taxi = i.next();
 				if(taxi.getId().equals(request.getAlias())){
 					taxi.setBusy();
+					taxi.setCustomer(null);
 					break;
 				}
 			}

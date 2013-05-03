@@ -60,9 +60,25 @@ public class MyTaxiGUI extends Block {
 		frame.setVisible(false);
 	}*/
 	
-	// triggered when new order or cancek order comes in
+	// triggered when new order or cancel order comes in
 	public void showString(String in) {
 		text.setText(in);
+		
+		// when deciding whether to accept the order, 
+		// disable logoff button
+		if (in.contains("cancel") == false) {
+			buttonsMap.get("logoff").setEnabled(false);
+		}
+		
+		// when order comes and current state is busy, 
+		// show correct GUI
+		if (in.contains("cancel") == false && text.getText().toLowerCase().contains("busy")) {
+			buttonsMap.get("logon").setEnabled(false);
+			buttonsMap.get("logoff").setEnabled(false);
+			buttonsMap.get("free").setEnabled(true);
+			buttonsMap.get("busy").setEnabled(false);
+			buttonsMap.get("accept").setEnabled(true);
+		}
 		
 		// judge if new order or cancel order
 		if (in.contains("cancel")) {
